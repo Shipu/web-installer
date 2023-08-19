@@ -1,0 +1,34 @@
+{
+    "name": "shipu/web-installer",
+    "description": "Laravel Web Installer",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shipu Ahamed",
+            "email": "shipuahamed01@gmail.com"
+        }
+    ],
+    "autoload": {
+            "psr-4": {
+                "Shipu\\WebInstaller\\": "src/"
+            }
+        },
+    "require": {
+        "spatie/laravel-package-tools": "^1.9",
+        "livewire/livewire": "^3.0@beta",
+        "filament/forms": "^3.0-stable"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Shipu\\WebInstaller\\WebInstallerServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    }
+}
