@@ -1,7 +1,29 @@
 <?php
 
+use Shipu\WebInstaller\Forms\Fields\ApplicationFields;
+use Shipu\WebInstaller\Forms\Fields\EnvironmentFields;
+use Shipu\WebInstaller\Forms\Fields\FolderPermissionField;
+use Shipu\WebInstaller\Forms\Fields\ServerRequirementFields;
+use Shipu\WebInstaller\Manager\InstallationManger;
+
 return [
 
+    'name' => 'Web Installer',
+
+    'user_model' => \App\Models\User::class,
+
+    'steps' => [
+        ServerRequirementFields::class,
+        FolderPermissionField::class,
+        EnvironmentFields::class,
+        ApplicationFields::class,
+    ],
+
+    'redirect_url' => function() {
+        return route('home');
+    },
+
+    'installation_manager' => InstallationManger::class,
     /*
     |--------------------------------------------------------------------------
     | Server Requirements
@@ -15,6 +37,15 @@ return [
     'core' => [
         'minPhpVersion' => '8.1.0',
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Php and Apache Requirements
+    |--------------------------------------------------------------------------
+    |
+    | php extensions and apache modules requirements
+    |
+    */
     'requirements' => [
         'php' => [
             'openssl',
@@ -43,6 +74,15 @@ return [
         'storage/logs/'          => '755',
         'bootstrap/cache/'       => '755',
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Environment Form
+    |--------------------------------------------------------------------------
+    |
+    | environment form fields
+    |
+    */
     'environment' => [
         'form' => [
             'app.name' => [
@@ -96,6 +136,15 @@ return [
             ],
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Applications Form
+    |--------------------------------------------------------------------------
+    |
+    | applications form fields
+    |
+    */
     'applications' => [
         'admin.name' => [
             'label' => 'Admin Name',
