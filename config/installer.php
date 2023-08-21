@@ -5,10 +5,11 @@ use Shipu\WebInstaller\Forms\Fields\EnvironmentFields;
 use Shipu\WebInstaller\Forms\Fields\FolderPermissionField;
 use Shipu\WebInstaller\Forms\Fields\ServerRequirementFields;
 use Shipu\WebInstaller\Manager\InstallationManger;
+use Shipu\WebInstaller\Rules\DatabaseConnectionRule;
 
 return [
 
-    'name' => 'Web Installer',
+    'name' => 'Laravel Web Installer',
 
     'user_model' => \App\Models\User::class,
 
@@ -102,35 +103,50 @@ return [
             'database.host' => [
                 'label' => 'Database Host',
                 'required' => true,
-                'rules' => 'string|max:50',
+                'rules' => [
+                    'string', 'max:50',
+                    new DatabaseConnectionRule(),
+                ],
                 'env_key' => 'DB_HOST',
                 'config_key' => 'database.connections.mysql.host',
             ],
             'database.port' => [
                 'label' => 'Database Port',
                 'required' => true,
-                'rules' => 'numeric',
+                'rules' => [
+                    'numeric',
+                    new DatabaseConnectionRule(),
+                ],
                 'env_key' => 'DB_PORT',
                 'config_key' => 'database.connections.mysql.port',
             ],
             'database.name' => [
                 'label' => 'Database Name',
                 'required' => true,
-                'rules' => 'string|max:50',
+                'rules' => [
+                    'string', 'max:50',
+                    new DatabaseConnectionRule(),
+                ],
                 'env_key' => 'DB_DATABASE',
                 'config_key' => 'database.connections.mysql.database',
             ],
             'database.username' => [
                 'label' => 'Database Username',
                 'required' => true,
-                'rules' => 'string|max:50',
+                'rules' => [
+                    'string','max:50',
+                    new DatabaseConnectionRule(),
+                ],
                 'env_key' => 'DB_USERNAME',
                 'config_key' => 'database.connections.mysql.username',
             ],
             'database.password' => [
                 'label' => 'Database Password',
                 'required' => false,
-                'rules' => 'nullable|string|max:50',
+                'rules' => [
+                    'nullable', 'string', 'max:50',
+                    new DatabaseConnectionRule(),
+                ],
                 'env_key' => 'DB_PASSWORD',
                 'config_key' => 'database.connections.mysql.password',
             ],

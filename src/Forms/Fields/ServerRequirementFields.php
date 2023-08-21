@@ -27,20 +27,13 @@ class ServerRequirementFields
 
         ];
         foreach (config('installer.requirements.php') as $extensions) {
+            $value = $requirements['requirements']['php'][$extensions] ?? false;
             $fields[] = ViewBorder::make('server_requirements.'
                 .strtolower($extensions).'_view')
                 ->label(studly_case($extensions))
-                ->required(function ($state) {
-                    return ! ($state === true);
-                })
+                ->required(! ($value === true))
                 ->inlineLabel()
-                ->default($requirements['requirements']['php'][$extensions] ??
-                    false);
-//            $fields[] = Hidden::make('server_requirements.'.strtolower($extensions))
-//                ->required(function ($state) {
-//                    return !($state === true);
-//                })
-//                ->default($requirements['requirements']['php'][$extensions] ?? '');
+                ->default($value);
         }
 
         return $fields;

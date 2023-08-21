@@ -2,7 +2,6 @@
 
 namespace Shipu\WebInstaller\Livewire;
 
-use Filament\Facades\Filament;
 use Filament\Forms\Components\Wizard;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;

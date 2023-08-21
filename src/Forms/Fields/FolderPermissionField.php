@@ -2,7 +2,6 @@
 
 namespace Shipu\WebInstaller\Forms\Fields;
 
-use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Wizard\Step;
 use Shipu\WebInstaller\Concerns\FieldContract;
 use Shipu\WebInstaller\Forms\Components\ViewBorder;
@@ -25,11 +24,6 @@ class FolderPermissionField implements FieldContract
                 ->inlineLabel()
                 ->required(! $permission['isSet'])
                 ->default($permission['permission']);
-            $fields[] = Hidden::make('permissions.'.$permission['folder'])
-                ->required(function ($state) {
-                    return ! ($state === true);
-                })
-                ->default($permission['isSet'] ? true : '');
         }
 
         return $fields;

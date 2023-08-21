@@ -2,6 +2,7 @@
 
 namespace Shipu\WebInstaller\Utilities;
 
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 class DatabaseConnection
