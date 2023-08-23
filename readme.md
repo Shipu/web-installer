@@ -1,5 +1,12 @@
 # Laravel Web Installer
 
+## Screenshots
+![Server Requirements](screenshots/installer_1.png)
+![Folder Permissions](screenshots/installer_2.png)
+![Environment](screenshots/installer_3.png)
+![Application Settings](screenshots/installer_4.png)
+
+
 Protect other routes if not installed.
 
 First register it in `app\Http\Kernel.php`:
