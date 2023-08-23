@@ -1,5 +1,10 @@
 # Laravel Web Installer
 
+## Installation 
+```ssh
+composer require shipu/web-installer
+```
+
 ## Screenshots
 ![Server Requirements](screenshots/installer_1.png)
 ![Folder Permissions](screenshots/installer_2.png)
