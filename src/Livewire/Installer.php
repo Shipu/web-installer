@@ -10,6 +10,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\HtmlString;
 use Livewire\Component;
@@ -30,7 +31,7 @@ class Installer extends Component implements HasForms
         $this->setDefaultValues();
 
         if (file_exists(storage_path('installed'))) {
-            return redirect()->intended("/");
+            return redirect(config('installer.redirect_url')());
         }
     }
 
@@ -60,17 +61,17 @@ class Installer extends Component implements HasForms
     {
         return [
             Wizard::make($this->getSteps())
-                ->submitAction(new HtmlString('
-                    <button 
-                        wire:click="save" 
-                        type="submit" 
+                ->submitAction(new HtmlString(Blade::render(<<<BLADE
+                    <x-filament::button
+                        type="submit"
                         wire:loading.attr="disabled"
-                        class="inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset filament-button min-h-[2rem] px-3 text-sm text-white shadow focus:ring-white border-transparent bg-primary-600 hover:bg-primary-500 focus:bg-primary-700 focus:ring-offset-primary-700"
+                        size="sm"
+                        icon="heroicon-m-sparkles"
                     >
-                        <span wire:loading.remove>Install</span>
-                        <span wire:loading>Please Wait. Installing...</span>
-                    </button>
-            ')),
+                        Install
+                        <span wire:loading>ongoing. Please Wait...</span>
+                    </x-filament::button>
+                BLADE)))
         ];
     }
 

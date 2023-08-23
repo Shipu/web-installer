@@ -2,6 +2,7 @@
 
 namespace Shipu\WebInstaller;
 
+use Illuminate\Support\Facades\Schema;
 use Livewire\Livewire;
 use Shipu\WebInstaller\Livewire\Installer;
 use Spatie\LaravelPackageTools\Package;

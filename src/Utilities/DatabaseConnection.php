@@ -11,19 +11,8 @@ class DatabaseConnection
     {
         $connection = 'mysql';
 
-        $settings = config("database.connections.$connection");
         $databaseConnectionInfo['database']['drive']
             = $databaseConnectionInfo['database']['driver'] ?? $connection;
-
-        config([
-            'database' => [
-                'default'     => $connection,
-                'connections' => [
-                    $connection => array_merge($settings,
-                        $databaseConnectionInfo['database']),
-                ],
-            ],
-        ]);
 
         DB::purge();
 

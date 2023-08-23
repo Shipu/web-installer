@@ -21,7 +21,7 @@ return [
     ],
 
     'redirect_url' => function() {
-        return route('home');
+        return route('welcome');
     },
 
     'installation_manager' => InstallationManger::class,
