@@ -35,8 +35,6 @@
         </style>
         @filamentStyles
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-{{--        @livewireStyles--}}
-{{--        @livewireScripts--}}
     </head>
 
     <body  class="min-h-screen overscroll-y-none bg-gray-50 font-normal text-gray-950 antialiased dark:bg-gray-950 dark:text-white">
