@@ -15,18 +15,7 @@ php artisan vendor:publish --tag=web-installer-assets
 ![Environment](screenshots/installer_3.png)
 ![Application Settings](screenshots/installer_4.png)
 
-
-Protect other routes if not installed.
-
-First register it in `app\Http\Kernel.php`:
-
-```php
-protected $routeMiddleware = [
-    // ...
-    'redirect.if.not.installed' => \Shipu\WebInstaller\Middleware\RedirectIfNotInstalled::class,
-];
-```
-Now you can apply the middleware to a route or route-group. Eg:
+Protect other routes if not installed then you can apply the middleware to a route or route-group. Eg:
 
 ```php
 Route::group(['middleware' => 'redirect.if.not.installed'], function () {
