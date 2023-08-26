@@ -43,11 +43,17 @@ class InstallationManger implements InstallationContract
 
     public function redirect(): Application|Redirector|RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
-        if (class_exists(Filament::class)) {
-            return redirect()->intended(Filament::getUrl());
-        }
+        try {
+            if (class_exists(Filament::class)) {
+                return redirect()->intended(Filament::getUrl());
+            }
 
-        return redirect(config('installer.redirect_url')());
+            return redirect(config('installer.redirect_url')());
+        } catch (\Exception $exception) {
+            Log::info("route not found...");
+            Log::info($exception->getMessage());
+            return redirect()->route('installer.success');
+        }
     }
 
     public function dehydrate(): void

@@ -21,7 +21,7 @@ return [
     ],
 
     'redirect_url' => function () {
-        return route('welcome');
+        return route('welcome'); // if not found the route then redirect route('installer.success')
     },
 
     'installation_manager' => InstallationManger::class,
