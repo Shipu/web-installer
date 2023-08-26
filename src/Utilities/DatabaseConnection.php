@@ -3,21 +3,20 @@
 namespace Shipu\WebInstaller\Utilities;
 
 use Exception;
+use Illuminate\Database\Connectors\ConnectionFactory;
 use Illuminate\Support\Facades\DB;
 
 class DatabaseConnection
 {
-    public function check($databaseConnectionInfo): array
+    public function check($environmentUpdatedInfo): array
     {
-        $connection = 'mysql';
-
-        $databaseConnectionInfo['database']['drive']
-            = $databaseConnectionInfo['database']['driver'] ?? $connection;
+        $databaseConfig
+            = $this->makeNewConfig($environmentUpdatedInfo['database']);
 
         DB::purge();
 
         try {
-            DB::connection()->getPdo();
+            app(ConnectionFactory::class)->make($databaseConfig)->getPdo();
 
             return [
                 'success' => true,
@@ -29,5 +28,19 @@ class DatabaseConnection
                 'message' => $e->getMessage(),
             ];
         }
+    }
+
+    public function makeNewConfig($databaseConnectionInfo): array
+    {
+        $connection = $databaseConnectionInfo['driver'] ?? 'mysql';
+        $connectionConfig = config('database.connections.'.$connection);
+
+        $connectionConfig['host'] = $databaseConnectionInfo['host'];
+        $connectionConfig['port'] = $databaseConnectionInfo['port'];
+        $connectionConfig['database'] = $databaseConnectionInfo['name'];
+        $connectionConfig['username'] = $databaseConnectionInfo['username'];
+        $connectionConfig['password'] = $databaseConnectionInfo['password'];
+
+        return $connectionConfig;
     }
 }

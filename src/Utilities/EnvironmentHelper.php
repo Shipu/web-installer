@@ -2,9 +2,10 @@
 
 namespace Shipu\WebInstaller\Utilities;
 
+use Illuminate\Support\Facades\Artisan;
+
 class EnvironmentHelper
 {
-
     public function putPermanentEnv($key, $value): void
     {
         $path = app()->environmentFilePath();
@@ -22,4 +23,14 @@ class EnvironmentHelper
         ));
     }
 
+    public function updateAllEnv($installerFormConfig, $environment): void
+    {
+        foreach ($installerFormConfig as $key => $config) {
+            $newValue = array_get($environment, $key);
+            $this->putPermanentEnv($config['env_key'], $newValue);
+        }
+
+        Artisan::call('config:clear');
+    }
+    
 }

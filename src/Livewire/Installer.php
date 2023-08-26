@@ -71,7 +71,8 @@ class Installer extends Component implements HasForms
                         Install
                         <span wire:loading>ongoing. Please Wait...</span>
                     </x-filament::button>
-                BLADE)))
+                BLADE
+                )))
         ];
     }
 

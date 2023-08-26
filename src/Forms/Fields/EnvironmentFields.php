@@ -28,13 +28,11 @@ class EnvironmentFields implements FieldContract
         return Step::make('environment')
             ->label('Environment')
             ->schema(self::form())
-            ->afterValidation(function ($state) {
+            ->beforeValidation(function ($state) {
                 $environment = $state['environments'] ?? [];
-                foreach (config('installer.environment.form') as $key => $config) {
-                    $newValue = array_get($environment, $key);
-                    $environmentHelper = new EnvironmentHelper();
-                    $environmentHelper->putPermanentEnv($config['env_key'], $newValue);
-                }
+                $environmentHelper = new EnvironmentHelper();
+                $environmentHelper->updateAllEnv(config('installer.environment.form'),
+                    $environment);
             });
     }
 }
