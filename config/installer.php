@@ -2,7 +2,7 @@
 
 use Shipu\WebInstaller\Forms\Fields\ApplicationFields;
 use Shipu\WebInstaller\Forms\Fields\EnvironmentFields;
-use Shipu\WebInstaller\Forms\Fields\FolderPermissionField;
+use Shipu\WebInstaller\Forms\Fields\FolderPermissionStep;
 use Shipu\WebInstaller\Forms\Fields\ServerRequirementFields;
 use Shipu\WebInstaller\Manager\InstallationManger;
 use Shipu\WebInstaller\Rules\DatabaseConnectionRule;
@@ -15,7 +15,7 @@ return [
 
     'steps' => [
         ServerRequirementFields::class,
-        FolderPermissionField::class,
+        FolderPermissionStep::class,
         EnvironmentFields::class,
         ApplicationFields::class,
     ],

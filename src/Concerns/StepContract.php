@@ -4,7 +4,7 @@ namespace Shipu\WebInstaller\Concerns;
 
 use Filament\Forms\Components\Wizard\Step;
 
-interface FieldContract
+interface StepContract
 {
     public static function make(): Step;
 }

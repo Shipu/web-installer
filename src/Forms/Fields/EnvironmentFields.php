@@ -4,10 +4,10 @@ namespace Shipu\WebInstaller\Forms\Fields;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Wizard\Step;
-use Shipu\WebInstaller\Concerns\FieldContract;
+use Shipu\WebInstaller\Concerns\StepContract;
 use Shipu\WebInstaller\Utilities\EnvironmentHelper;
 
-class EnvironmentFields implements FieldContract
+class EnvironmentFields implements StepContract
 {
     public static function form(): array
     {
