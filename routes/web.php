@@ -9,4 +9,4 @@ Route::get('installer', Installer::class)->name('installer')
 
 Route::get('/installed', function () {
     return view('web-installer::success');
-})->name('installer.success');
+})->name('installer.success')->middleware(['web', 'redirect.if.not.installed']);
