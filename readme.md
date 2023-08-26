@@ -4,6 +4,10 @@
 ```ssh
 composer require shipu/web-installer
 ```
+then publish the assets
+```ssh
+php artisan vendor:publish --tag=web-installer-assets
+ ```
 
 ## Screenshots
 ![Server Requirements](screenshots/installer_1.png)
