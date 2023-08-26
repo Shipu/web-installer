@@ -8,5 +8,5 @@ Route::get('installer', Installer::class)->name('installer')
     ->middleware(['web']);
 
 Route::get('/installed', function () {
-    return view('installer::success');
+    return view('web-installer::success');
 })->name('installer.success');
