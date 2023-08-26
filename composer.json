@@ -17,7 +17,6 @@
     "require": {
         "spatie/laravel-package-tools": "^1.9",
         "livewire/livewire": "^3.0@beta",
-        "filament/filament": "^3.0-stable",
         "filament/forms": "^3.0-stable",
         "filament/support": "^3.0-stable",
         "laravel/helpers": "^1.6"

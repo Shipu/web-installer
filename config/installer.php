@@ -4,6 +4,7 @@ use Shipu\WebInstaller\Forms\Fields\ApplicationFields;
 use Shipu\WebInstaller\Forms\Fields\EnvironmentFields;
 use Shipu\WebInstaller\Forms\Fields\FolderPermissionField;
 use Shipu\WebInstaller\Forms\Fields\ServerRequirementFields;
+use Shipu\WebInstaller\Livewire\Installer;
 use Shipu\WebInstaller\Manager\InstallationManger;
 use Shipu\WebInstaller\Rules\DatabaseConnectionRule;
 
@@ -23,6 +24,8 @@ return [
     'redirect_url' => function() {
         return route('welcome');
     },
+
+    'livewire_installer' => Installer::class,
 
     'installation_manager' => InstallationManger::class,
     /*
