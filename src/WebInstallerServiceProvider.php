@@ -11,7 +11,7 @@ class WebInstallerServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        Livewire::component('web-installer', config('installer.livewire_installer'));
+        Livewire::component('web-installer', Installer::class);
 
         $package->name('web-installer')
             ->hasAssets()

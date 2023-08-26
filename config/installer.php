@@ -25,8 +25,6 @@ return [
         return route('welcome');
     },
 
-    'livewire_installer' => Installer::class,
-
     'installation_manager' => InstallationManger::class,
     /*
     |--------------------------------------------------------------------------
