@@ -34,7 +34,8 @@
             }
         </style>
         @filamentStyles
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite('resources/css/app.css', 'vendor/web-installer/build')
+        @vite('resources/js/app.js', 'vendor/web-installer/build')
     </head>
 
     <body  class="min-h-screen overscroll-y-none bg-gray-50 font-normal text-gray-950 antialiased dark:bg-gray-950 dark:text-white">
