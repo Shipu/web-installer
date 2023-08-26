@@ -25,8 +25,9 @@ class RequirementsChecker
         ];
 
         foreach ($allRequirements as $type => $requirements) {
-            if($method = $mapMethod[$type] ?? null) {
-                $results['requirements'][$type] = $this->{$method}($requirements);
+            if ($method = $mapMethod[$type] ?? null) {
+                $results['requirements'][$type]
+                    = $this->{$method}($requirements);
             }
         }
 
@@ -65,7 +66,8 @@ class RequirementsChecker
     {
         $currentPhpVersion = $this->getPhpVersionInfo();
         $minVersionPhp = $minPhpVersion ?? $this->getMinPhpVersion();
-        $supported = version_compare($currentPhpVersion['version'], $minVersionPhp) >= 0;
+        $supported = version_compare($currentPhpVersion['version'],
+                $minVersionPhp) >= 0;
 
         return [
             'full'      => $currentPhpVersion['full'],

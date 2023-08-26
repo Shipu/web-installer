@@ -33,13 +33,16 @@ class DatabaseConnectionRule implements ValidationRule, DataAwareRule
      *
      * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
      */
-    public function validate(string $attribute, mixed $value, Closure $fail): void
-    {
+    public function validate(
+        string $attribute,
+        mixed $value,
+        Closure $fail
+    ): void {
         $request = $this->data['data'] ?? [];
         $environment = $request['environments'] ?? [];
         $databaseConnection = new DatabaseConnection();
         $connection = $databaseConnection->check($environment);
-        if($connection['success']) {
+        if ($connection['success']) {
             return;
         }
 

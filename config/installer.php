@@ -4,7 +4,6 @@ use Shipu\WebInstaller\Forms\Fields\ApplicationFields;
 use Shipu\WebInstaller\Forms\Fields\EnvironmentFields;
 use Shipu\WebInstaller\Forms\Fields\FolderPermissionField;
 use Shipu\WebInstaller\Forms\Fields\ServerRequirementFields;
-use Shipu\WebInstaller\Livewire\Installer;
 use Shipu\WebInstaller\Manager\InstallationManger;
 use Shipu\WebInstaller\Rules\DatabaseConnectionRule;
 
@@ -21,7 +20,7 @@ return [
         ApplicationFields::class,
     ],
 
-    'redirect_url' => function() {
+    'redirect_url' => function () {
         return route('welcome');
     },
 
@@ -36,7 +35,7 @@ return [
     | by looping through the array and run "extension_loaded" on it.
     |
     */
-    'core' => [
+    'core'                 => [
         'minPhpVersion' => '8.1.0',
     ],
 
@@ -48,8 +47,8 @@ return [
     | php extensions and apache modules requirements
     |
     */
-    'requirements' => [
-        'php' => [
+    'requirements'         => [
+        'php'    => [
             'openssl',
             'pdo',
             'mbstring',
@@ -71,10 +70,10 @@ return [
     | requires more permissions just add them to the array list bellow.
     |
     */
-    'permissions' => [
-        'storage/framework/'     => '755',
-        'storage/logs/'          => '755',
-        'bootstrap/cache/'       => '755',
+    'permissions'          => [
+        'storage/framework/' => '755',
+        'storage/logs/'      => '755',
+        'bootstrap/cache/'   => '755',
     ],
 
     /*
@@ -85,70 +84,70 @@ return [
     | environment form fields
     |
     */
-    'environment' => [
+    'environment'          => [
         'form' => [
-            'app.name' => [
-                'label' => 'App Name',
-                'required' => true,
-                'rules' => 'string|max:100',
-                'env_key' => 'APP_NAME',
+            'app.name'          => [
+                'label'      => 'App Name',
+                'required'   => true,
+                'rules'      => 'string|max:100',
+                'env_key'    => 'APP_NAME',
                 'config_key' => 'app.name',
             ],
-            'app.url' => [
-                'label' => 'App Url',
-                'required' => true,
-                'rules' => 'url',
-                'env_key' => 'APP_URL',
+            'app.url'           => [
+                'label'      => 'App Url',
+                'required'   => true,
+                'rules'      => 'url',
+                'env_key'    => 'APP_URL',
                 'config_key' => 'app.url',
             ],
-            'database.host' => [
-                'label' => 'Database Host',
-                'required' => true,
-                'rules' => [
+            'database.host'     => [
+                'label'      => 'Database Host',
+                'required'   => true,
+                'rules'      => [
                     'string', 'max:50',
                     new DatabaseConnectionRule(),
                 ],
-                'env_key' => 'DB_HOST',
+                'env_key'    => 'DB_HOST',
                 'config_key' => 'database.connections.mysql.host',
             ],
-            'database.port' => [
-                'label' => 'Database Port',
-                'required' => true,
-                'rules' => [
+            'database.port'     => [
+                'label'      => 'Database Port',
+                'required'   => true,
+                'rules'      => [
                     'numeric',
                     new DatabaseConnectionRule(),
                 ],
-                'env_key' => 'DB_PORT',
+                'env_key'    => 'DB_PORT',
                 'config_key' => 'database.connections.mysql.port',
             ],
-            'database.name' => [
-                'label' => 'Database Name',
-                'required' => true,
-                'rules' => [
+            'database.name'     => [
+                'label'      => 'Database Name',
+                'required'   => true,
+                'rules'      => [
                     'string', 'max:50',
                     new DatabaseConnectionRule(),
                 ],
-                'env_key' => 'DB_DATABASE',
+                'env_key'    => 'DB_DATABASE',
                 'config_key' => 'database.connections.mysql.database',
             ],
             'database.username' => [
-                'label' => 'Database Username',
-                'required' => true,
-                'rules' => [
-                    'string','max:50',
+                'label'      => 'Database Username',
+                'required'   => true,
+                'rules'      => [
+                    'string', 'max:50',
                     new DatabaseConnectionRule(),
                 ],
-                'env_key' => 'DB_USERNAME',
+                'env_key'    => 'DB_USERNAME',
                 'config_key' => 'database.connections.mysql.username',
             ],
             'database.password' => [
-                'label' => 'Database Password',
-                'required' => false,
-                'rules' => [
+                'label'      => 'Database Password',
+                'required'   => false,
+                'rules'      => [
                     'nullable', 'string', 'max:50',
                     new DatabaseConnectionRule(),
                 ],
-                'env_key' => 'DB_PASSWORD',
+                'env_key'    => 'DB_PASSWORD',
                 'config_key' => 'database.connections.mysql.password',
             ],
         ],
@@ -162,24 +161,24 @@ return [
     | applications form fields
     |
     */
-    'applications' => [
-        'admin.name' => [
-            'label' => 'Admin Name',
+    'applications'         => [
+        'admin.name'     => [
+            'label'    => 'Admin Name',
             'required' => true,
-            'rules' => 'string|max:100',
-            'default' => 'Mr Admin'
+            'rules'    => 'string|max:100',
+            'default'  => 'Mr Admin'
         ],
-        'admin.email' => [
-            'label' => 'Admin Email',
+        'admin.email'    => [
+            'label'    => 'Admin Email',
             'required' => true,
-            'rules' => 'string|max:100',
-            'default' => 'admin@gmail.com'
+            'rules'    => 'string|max:100',
+            'default'  => 'admin@gmail.com'
         ],
         'admin.password' => [
-            'label' => 'Admin Password',
+            'label'    => 'Admin Password',
             'required' => true,
-            'rules' => 'string|max:100',
-            'default' => '12345678'
+            'rules'    => 'string|max:100',
+            'default'  => '12345678'
         ],
     ]
 ];

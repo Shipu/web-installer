@@ -11,4 +11,6 @@ interface InstallationContract
     public function run($data): bool;
 
     public function redirect(): Application|Redirector|RedirectResponse|\Illuminate\Contracts\Foundation\Application;
+
+    public function dehydrate(): void;
 }

@@ -2,16 +2,13 @@
 
 namespace Shipu\WebInstaller\Manager;
 
-use App\Models\User;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Shipu\WebInstaller\Concerns\InstallationContract;
-use Shipu\WebInstaller\Utilities\DatabaseConnection;
 
 class InstallationManger implements InstallationContract
 {
@@ -46,7 +43,7 @@ class InstallationManger implements InstallationContract
 
     public function redirect(): Application|Redirector|RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
-        if(class_exists(Filament::class)) {
+        if (class_exists(Filament::class)) {
             return redirect()->intended(Filament::getUrl());
         }
 
