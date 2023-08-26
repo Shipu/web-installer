@@ -31,7 +31,13 @@ class Installer extends Component implements HasForms
         $this->setDefaultValues();
 
         if (file_exists(storage_path('installed'))) {
-            return redirect(config('installer.redirect_url')());
+            try {
+                return redirect(config('installer.redirect_url')());
+            } catch (\Exception $exception) {
+                Log::info("route not found...");
+                Log::info($exception->getMessage());
+                return redirect()->route('installer.success');
+            }
         }
     }
 
