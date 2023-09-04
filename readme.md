@@ -12,7 +12,7 @@ php artisan vendor:publish --tag=web-installer-assets
  ```
 
 ## Screenshots
-![Server Requirements](https://raw.githubusercontent.com/Shipu/web-installer/master/screenshots/installer_1.png)
+![Server Requirements](https://raw.githubusercontent.com/Shipu/web-installer/v1.0.0/screenshots/installer_1.png)
 
 ![Folder Permissions](https://raw.githubusercontent.com/Shipu/web-installer/master/screenshots/installer_2.png)
 
