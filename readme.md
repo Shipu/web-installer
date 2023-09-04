@@ -12,10 +12,10 @@ php artisan vendor:publish --tag=web-installer-assets
  ```
 
 ## Screenshots
-![Server Requirements](screenshots/installer_1.png)
-![Folder Permissions](screenshots/installer_2.png)
-![Environment](screenshots/installer_3.png)
-![Application Settings](screenshots/installer_4.png)
+![Server Requirements](https://raw.githubusercontent.com/Shipu/web-installer/master/screenshots/installer_1.png)
+![Folder Permissions](https://raw.githubusercontent.com/Shipu/web-installer/master/screenshots/installer_2.png)
+![Environment](https://raw.githubusercontent.com/Shipu/web-installer/master/screenshots/installer_3.png)
+![Application Settings](https://raw.githubusercontent.com/Shipu/web-installer/master/screenshots/installer_4.png)
 
 ## Add New Step
 You can add new step in installer. For this you have to create a new class and implement `Shipu\WebInstaller\Concerns\StepContract` class. Eg:
