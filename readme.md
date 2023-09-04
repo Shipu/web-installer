@@ -3,11 +3,11 @@ Laravel Web Installer is a Laravel package that allows you to install your appli
 
 [![Latest Stable Version](http://poser.pugx.org/shipu/web-installer/v)](https://packagist.org/packages/shipu/web-installer) [![Total Downloads](http://poser.pugx.org/shipu/web-installer/downloads)](https://packagist.org/packages/shipu/web-installer) [![Latest Unstable Version](http://poser.pugx.org/shipu/web-installer/v/unstable)](https://packagist.org/packages/shipu/web-installer) [![License](http://poser.pugx.org/shipu/web-installer/license)](https://packagist.org/packages/shipu/web-installer) [![PHP Version Require](http://poser.pugx.org/shipu/web-installer/require/php)](https://packagist.org/packages/shipu/web-installer)
 ## Installation 
-```ssh
+```bash
 composer require shipu/web-installer
 ```
 then publish the assets
-```ssh
+```bash
 php artisan vendor:publish --tag=web-installer-assets
  ```
 
@@ -84,6 +84,6 @@ public function panel(Panel $panel): Panel
 
 you can modify almost everything in this package. For this you have to publish the config file. Eg:
 
-```ssh
+```bash
 php artisan vendor:publish --tag=web-installer-config
 ```
