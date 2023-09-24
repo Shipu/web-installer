@@ -13,6 +13,7 @@ class EnvironmentFields implements StepContract
     {
         $environmentsFields = [];
         foreach (config('installer.environment.form') as $envKey => $config) {
+            static::ruleClassHandler($config['rules']);
             $environmentsFields[] = TextInput::make('environments.'.$envKey)
                 ->label($config['label'])
                 ->required($config['required'])
@@ -34,5 +35,31 @@ class EnvironmentFields implements StepContract
                 $environmentHelper->updateAllEnv(config('installer.environment.form'),
                     $environment);
             });
+    }
+
+    /**
+     * Handles class calls in rules.
+     * @param $rules
+     * @return void
+     */
+    public static function ruleClassHandler(&$rules): void
+    {
+        if(is_array($rules))
+        {
+            foreach ($rules as $key => $rule)
+            {
+                if(str_contains($rule, "\\") && class_exists($rule))
+                {
+                    $rules[$key] = new $rule;
+                }
+            }
+        }
+        elseif (is_string($rules))
+        {
+            if(str_contains($rules, "\\") && class_exists($rules))
+            {
+                $rules = new $rules;
+            }
+        }
     }
 }

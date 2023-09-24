@@ -4,7 +4,7 @@ use Shipu\WebInstaller\Forms\Fields\ApplicationFields;
 use Shipu\WebInstaller\Forms\Fields\EnvironmentFields;
 use Shipu\WebInstaller\Forms\Fields\FolderPermissionStep;
 use Shipu\WebInstaller\Forms\Fields\ServerRequirementFields;
-use Shipu\WebInstaller\Manager\InstallationManger;
+use Shipu\WebInstaller\Manager\InstallationManager;
 use Shipu\WebInstaller\Rules\DatabaseConnectionRule;
 
 return [
@@ -20,11 +20,9 @@ return [
         ApplicationFields::class,
     ],
 
-    'redirect_url' => function () {
-        return route('welcome'); // if not found the route then redirect route('installer.success')
-    },
+    'redirect_route' => "welcome",
 
-    'installation_manager' => InstallationManger::class,
+    'installation_manager' => InstallationManager::class,
     /*
     |--------------------------------------------------------------------------
     | Server Requirements
@@ -105,7 +103,7 @@ return [
                 'required'   => true,
                 'rules'      => [
                     'string', 'max:50',
-                    new DatabaseConnectionRule(),
+                    DatabaseConnectionRule::class,
                 ],
                 'env_key'    => 'DB_HOST',
                 'config_key' => 'database.connections.mysql.host',
@@ -115,7 +113,7 @@ return [
                 'required'   => true,
                 'rules'      => [
                     'numeric',
-                    new DatabaseConnectionRule(),
+                    DatabaseConnectionRule::class,
                 ],
                 'env_key'    => 'DB_PORT',
                 'config_key' => 'database.connections.mysql.port',
@@ -125,7 +123,7 @@ return [
                 'required'   => true,
                 'rules'      => [
                     'string', 'max:50',
-                    new DatabaseConnectionRule(),
+                    DatabaseConnectionRule::class,
                 ],
                 'env_key'    => 'DB_DATABASE',
                 'config_key' => 'database.connections.mysql.database',
@@ -135,7 +133,7 @@ return [
                 'required'   => true,
                 'rules'      => [
                     'string', 'max:50',
-                    new DatabaseConnectionRule(),
+                    DatabaseConnectionRule::class,
                 ],
                 'env_key'    => 'DB_USERNAME',
                 'config_key' => 'database.connections.mysql.username',
@@ -145,7 +143,7 @@ return [
                 'required'   => false,
                 'rules'      => [
                     'nullable', 'string', 'max:50',
-                    new DatabaseConnectionRule(),
+                    DatabaseConnectionRule::class,
                 ],
                 'env_key'    => 'DB_PASSWORD',
                 'config_key' => 'database.connections.mysql.password',
@@ -172,7 +170,7 @@ return [
             'label'    => 'Admin Email',
             'required' => true,
             'rules'    => 'string|max:100',
-            'default'  => 'admin@gmail.com'
+            'default'  => 'admin@example.com'
         ],
         'admin.password' => [
             'label'    => 'Admin Password',

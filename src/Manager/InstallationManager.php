@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
 use Shipu\WebInstaller\Concerns\InstallationContract;
 
-class InstallationManger implements InstallationContract
+class InstallationManager implements InstallationContract
 {
     public function run($data): bool
     {
@@ -48,7 +48,7 @@ class InstallationManger implements InstallationContract
                 return redirect()->intended(Filament::getUrl());
             }
 
-            return redirect(config('installer.redirect_url')());
+            return redirect(config('installer.redirect_route'));
         } catch (\Exception $exception) {
             Log::info("route not found...");
             Log::info($exception->getMessage());
