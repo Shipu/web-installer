@@ -2,6 +2,7 @@
 
 namespace Shipu\WebInstaller;
 
+use Illuminate\Support\Facades\Schema;
 use Livewire\Livewire;
 use Shipu\WebInstaller\Livewire\Installer;
 use Shipu\WebInstaller\Middleware\RedirectIfNotInstalled;
@@ -21,5 +22,15 @@ class WebInstallerServiceProvider extends PackageServiceProvider
             ->hasViews('web-installer')
             ->hasConfigFile('installer')
             ->hasRoute('web');
+    }
+
+    public function packageBooted(): void
+    {
+        $this->app['config']['session.driver'] = 'file';
+        $this->app['config']['cache.default'] = 'file';
+        if (file_exists(storage_path('installed')) && Schema::hasTable('sessions') && Schema::hasTable('cache')) {
+            $this->app['config']['session.driver'] = 'database';
+            $this->app['config']['cache.default'] = 'database';
+        }
     }
 }
