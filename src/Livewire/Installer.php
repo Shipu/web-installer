@@ -2,10 +2,11 @@
 
 namespace Shipu\WebInstaller\Livewire;
 
-use Filament\Forms\Components\Wizard;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
+use Filament\Schemas\Components\Wizard;
+use Filament\Schemas\Concerns\InteractsWithSchemas;
+use Filament\Schemas\Contracts\HasSchemas;
+use Filament\Schemas\Schema;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
@@ -15,16 +16,11 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\HtmlString;
 use Livewire\Component;
 
-class Installer extends Component implements HasForms
+class Installer extends Component implements HasSchemas
 {
-    use InteractsWithForms;
+    use InteractsWithSchemas;
 
-    public array $data = [];
-
-    protected function getFormStatePath(): string
-    {
-        return 'data';
-    }
+    public ?array $data = [];
 
     public function mount()
     {
@@ -63,9 +59,11 @@ class Installer extends Component implements HasForms
         return $steps;
     }
 
-    protected function getFormSchema(): array
+    public function form(Schema $schema): Schema
     {
-        return [
+        return $schema
+            ->statePath('data')
+            ->components([
             Wizard::make($this->getSteps())
                 ->submitAction(new HtmlString(Blade::render(<<<BLADE
                     <x-filament::button
@@ -78,8 +76,8 @@ class Installer extends Component implements HasForms
                         <span wire:loading>ongoing. Please Wait...</span>
                     </x-filament::button>
                 BLADE
-                )))
-        ];
+                ))),
+            ]);
     }
 
     public function save(): Redirector|Application|RedirectResponse
