@@ -2,6 +2,13 @@
 Laravel Web Installer is a Laravel package that allows you to install your application easily, without having to worry about setting up your environment before starting with the installation process.
 
 [![Latest Stable Version](http://poser.pugx.org/shipu/web-installer/v)](https://packagist.org/packages/shipu/web-installer) [![Total Downloads](http://poser.pugx.org/shipu/web-installer/downloads)](https://packagist.org/packages/shipu/web-installer) [![Latest Unstable Version](http://poser.pugx.org/shipu/web-installer/v/unstable)](https://packagist.org/packages/shipu/web-installer) [![License](http://poser.pugx.org/shipu/web-installer/license)](https://packagist.org/packages/shipu/web-installer) [![PHP Version Require](http://poser.pugx.org/shipu/web-installer/require/php)](https://packagist.org/packages/shipu/web-installer)
+## Requirements
+
+| Package version | Filament  | Livewire  | Laravel     | PHP    |
+|-----------------|-----------|-----------|-------------|--------|
+| 2.x             | 4.x / 5.x | 3.x / 4.x | 11.28+ / 12 | 8.2+   |
+| 1.x             | 3.x       | 3.x       | 10+         | 8.1+   |
+
 ## Installation 
 ```bash
 composer require shipu/web-installer
@@ -28,7 +35,7 @@ You can add new step in installer. For this you have to create a new class and i
 
 namespace Your\Namespace;
 
-use Filament\Forms\Components\Wizard\Step;
+use Filament\Schemas\Components\Wizard\Step;
 use Shipu\WebInstaller\Concerns\StepContract;
 
 class Overview implements StepContract
@@ -43,7 +50,7 @@ class Overview implements StepContract
     }
 }
 ```
-For `Step` documentation please visit [Filament Forms](https://filamentphp.com/docs/3.x/forms/layout/wizard)
+For `Step` documentation please visit [Filament Forms](https://filamentphp.com/docs/4.x/schemas/wizards)
 
 Then you have to add this class in `config/installer.php` Eg:
 
@@ -56,6 +63,17 @@ Then you have to add this class in `config/installer.php` Eg:
 //...
 ```
 Note: you have to publish config file first. More details in [Configuration](#configuration) section.
+
+## Upgrading from 1.x
+
+Version 2.x drops Filament 3 support. If you created custom steps:
+
+- import `Step` from `Filament\Schemas\Components\Wizard\Step` instead of `Filament\Forms\Components\Wizard\Step`;
+- republish the assets, since the stylesheet is now built with Tailwind CSS v4 for Filament 4/5:
+
+```bash
+php artisan vendor:publish --tag=web-installer-assets --force
+```
 
 ## Protect Routes
 
@@ -89,4 +107,18 @@ you can modify almost everything in this package. For this you have to publish t
 
 ```bash
 php artisan vendor:publish --tag=web-installer-config
+```
+
+## Development
+
+```bash
+composer install
+composer test
+```
+
+The installer stylesheet is prebuilt in `resources/dist`. After changing any view, rebuild it with:
+
+```bash
+npm install
+npm run build
 ```
