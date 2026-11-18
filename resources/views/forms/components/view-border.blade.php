@@ -1,7 +1,7 @@
 @php
     $default = $getDefaultState();
 @endphp
-<div class="flex justify-between gap-x-2 p-3 border-2">
+<div class="flex items-center justify-between gap-x-2 p-3 border-2 border-gray-200 dark:border-white/10">
     <div class="pl-10">
         {{ $getLabel() }}
     </div>

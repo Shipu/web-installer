@@ -20,3 +20,4 @@ yarn-error.log
 supervisord.log
 supervisord.pid
 composer.lock
+/resources/dist/hot
