@@ -13,8 +13,6 @@ class WebInstallerServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        Livewire::component('web-installer', Installer::class);
-
         $this->app['router']->aliasMiddleware('redirect.if.not.installed', RedirectIfNotInstalled::class);
 
         $package->name('web-installer')
@@ -26,6 +24,8 @@ class WebInstallerServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
+        Livewire::component('web-installer', Installer::class);
+
         $this->app['config']['session.driver'] = 'file';
         $this->app['config']['cache.default'] = 'file';
         if (file_exists(storage_path('installed')) && Schema::hasTable('sessions') && Schema::hasTable('cache')) {

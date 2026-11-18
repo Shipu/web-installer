@@ -3,7 +3,7 @@
 namespace Shipu\WebInstaller\Forms\Fields;
 
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Wizard\Step;
+use Filament\Schemas\Components\Wizard\Step;
 use Illuminate\Support\Facades\Hash;
 use Shipu\WebInstaller\Concerns\StepContract;
 

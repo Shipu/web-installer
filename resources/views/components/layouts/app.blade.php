@@ -10,11 +10,6 @@
         <title>{{ config('app.name') }}</title>
 
         <style>
-            .text-danger-500 {
-                --tw-text-opacity:1;
-                color: #d70b0b;
-            }
-
             [x-cloak=''],
             [x-cloak='x-cloak'],
             [x-cloak='1'] {
@@ -35,7 +30,6 @@
         </style>
         @filamentStyles
         @vite('resources/css/app.css', 'vendor/web-installer/build')
-        @vite('resources/js/app.js', 'vendor/web-installer/build')
     </head>
 
     <body  class="min-h-screen overscroll-y-none bg-gray-50 font-normal text-gray-950 antialiased dark:bg-gray-950 dark:text-white">

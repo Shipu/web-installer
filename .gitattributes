@@ -9,3 +9,11 @@
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
+/tests export-ignore
+/resources/css export-ignore
+phpunit.xml export-ignore
+testbench.yaml export-ignore
+package.json export-ignore
+package-lock.json export-ignore
+vite.config.js export-ignore
+/screenshots export-ignore

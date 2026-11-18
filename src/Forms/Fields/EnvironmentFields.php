@@ -3,7 +3,8 @@
 namespace Shipu\WebInstaller\Forms\Fields;
 
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Wizard\Step;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Wizard\Step;
 use Shipu\WebInstaller\Concerns\StepContract;
 use Shipu\WebInstaller\Utilities\EnvironmentHelper;
 
@@ -29,8 +30,8 @@ class EnvironmentFields implements StepContract
         return Step::make('environment')
             ->label('Environment')
             ->schema(self::form())
-            ->beforeValidation(function ($state) {
-                $environment = $state['environments'] ?? [];
+            ->beforeValidation(function (Get $get) {
+                $environment = $get('environments') ?? [];
                 $environmentHelper = new EnvironmentHelper();
                 $environmentHelper->updateAllEnv(config('installer.environment.form'),
                     $environment);

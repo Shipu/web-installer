@@ -2,7 +2,7 @@
 
 namespace Shipu\WebInstaller\Concerns;
 
-use Filament\Forms\Components\Wizard\Step;
+use Filament\Schemas\Components\Wizard\Step;
 
 interface StepContract
 {

@@ -2,11 +2,12 @@
 
 namespace Shipu\WebInstaller\Forms\Fields;
 
-use Filament\Forms\Components\Wizard\Step;
+use Filament\Schemas\Components\Wizard\Step;
+use Shipu\WebInstaller\Concerns\StepContract;
 use Shipu\WebInstaller\Forms\Components\ViewBorder;
 use Shipu\WebInstaller\Utilities\RequirementsChecker;
 
-class ServerRequirementFields
+class ServerRequirementFields implements StepContract
 {
     public static function form(): array
     {
