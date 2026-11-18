@@ -34,5 +34,23 @@
             ],
             "aliases": []
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0|^10.0",
+        "pestphp/pest": "^3.0|^4.0",
+        "pestphp/pest-plugin-livewire": "^3.0|^4.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Shipu\\WebInstaller\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest"
     }
 }

@@ -1,0 +1,15 @@
+providers:
+  - BladeUI\Icons\BladeIconsServiceProvider
+  - BladeUI\Heroicons\BladeHeroiconsServiceProvider
+  - Livewire\LivewireServiceProvider
+  - Filament\Support\SupportServiceProvider
+  - Filament\Actions\ActionsServiceProvider
+  - Filament\Schemas\SchemasServiceProvider
+  - Filament\Forms\FormsServiceProvider
+  - Filament\Infolists\InfolistsServiceProvider
+  - Filament\Notifications\NotificationsServiceProvider
+  - Shipu\WebInstaller\WebInstallerServiceProvider
+
+env:
+  - APP_KEY="base64:YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE="
+  - APP_DEBUG=true
