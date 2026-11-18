@@ -11,9 +11,11 @@ Laravel Web Installer is a Laravel package that allows you to install your appli
 
 ## Installation 
 ```bash
-composer require shipu/web-installer
+composer require shipu/web-installer:^2.0
 ```
-then publish the assets
+For Filament 3, use `shipu/web-installer:^1.0` instead.
+
+Then publish the assets
 ```bash
 php artisan vendor:publish --tag=web-installer-assets
  ```
