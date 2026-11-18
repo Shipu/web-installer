@@ -39,13 +39,7 @@ class Installer extends Component implements HasSchemas
 
     public function setDefaultValues(): void
     {
-        $default = [];
-        foreach (config('installer.environment.form') as $envKey => $config) {
-            array_set($default, 'environments.'.$envKey,
-                config($config['config_key']));
-        }
-
-        $this->form->fill($default);
+        $this->form->fill();
     }
 
     public function getSteps(): array
